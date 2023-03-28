@@ -4,12 +4,12 @@ Implementing the questionaty library to fetch the users choices for different ar
 import sys
 import questionary
 from clear_screen import clear
-from conf import api_example_conf
+# from conf import api_example_conf
 from conf import browser_os_name_conf as conf
 from conf import remote_credentials
 
 def display_gui_test_options(browser,browser_version,os_version,
-                             os_name,remote_flag,testrail_flag,tesults_flag):
+                                os_name,remote_flag,testrail_flag,tesults_flag):
     "Displays the selected options to run the GUI test"
     print("Browser selected:",browser)
     if browser_version == []:
