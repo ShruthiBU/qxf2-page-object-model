@@ -86,9 +86,11 @@ class Base_Page(Borg,unittest.TestCase):
         "Highlight the elements being operated upon"
         self.highlight_flag = True
 
+
     def turn_off_highlight(self):
         "Turn off the highlighting feature"
         self.highlight_flag = False
+
 
     def get_failure_message_list(self):
         "Return the failure message list"
@@ -127,22 +129,27 @@ class Base_Page(Borg,unittest.TestCase):
         self.testrail_flag = True
         self.tr_obj = Test_Rail()
 
+
     def set_test_run_id(self,test_run_id):
         "Set TestRail's test run id"
         self.test_run_id = test_run_id
 
+
     def register_tesults(self):
         "Register Tesults with Page"
         self.tesults_flag = True
+
 
     def register_browserstack(self):
         "Register Browser Stack with Page"
         self.browserstack_flag = True
         self.browserstack_obj = BrowserStack_Library()
 
+
     def set_calling_module(self,name):
         "Set the test name"
         self.calling_module = name
+
 
     def get_calling_module(self):
         "Get the name of the calling module"
@@ -220,6 +227,7 @@ class Base_Page(Borg,unittest.TestCase):
         'set the log file'
         self.log_name = self.testname + '.log'
         self.log_obj = Base_Logging(log_file_name=self.log_name,level=logging.DEBUG)
+
 
     def set_rp_logger(self,rp_pytest_service):
         "Set the reportportal logger"
@@ -377,6 +385,7 @@ class Base_Page(Borg,unittest.TestCase):
         "Get the window handles"
         return self.driver.window_handles
 
+
     def switch_frame(self,name=None,index=None,wait_time=2):
         "Make the driver switch to the frame"
         result_flag = False
@@ -399,6 +408,7 @@ class Base_Page(Borg,unittest.TestCase):
 
         return result_flag
 
+
     def _get_locator(key):
         "fetches locator from the locator conf"
         value = None
@@ -412,6 +422,7 @@ class Base_Page(Borg,unittest.TestCase):
 
         return value
 
+
     def get_element_attribute_value(self,element,attribute_name):
         "Return the elements attribute value if present"
         attribute_value = None
@@ -420,12 +431,14 @@ class Base_Page(Borg,unittest.TestCase):
 
         return attribute_value
 
+
     def highlight_element(self,element,wait_seconds=3):
         "Highlights a Selenium webdriver element"
         original_style = self.get_element_attribute_value(element,'style')
         self.apply_style_to_element(element,"border: 4px solid #F6F7AD;")
         self.wait(wait_seconds)
         self.apply_style_to_element(element,original_style)
+
 
     def highlight_elements(self,elements,wait_seconds=3):
         "Highlights a group of elements"
@@ -437,8 +450,10 @@ class Base_Page(Borg,unittest.TestCase):
         for style,element in zip(original_styles, elements) :
             self.apply_style_to_element(element,style)
 
+
     def apply_style_to_element(self,element,element_style):
         self.driver.execute_script("arguments[0].setAttribute('style', arguments[1])", element, element_style)
+
 
     def get_element(self,locator,verbose_flag=True):
         "Return the DOM element of the path or 'None' if the element is not found "
@@ -487,7 +502,7 @@ class Base_Page(Borg,unittest.TestCase):
         return dom_elements
 
 
-    def click_element(self,locator,wait_time=3):
+    def click_element(self,locator,wait_time=2):
         "Click the button supplied"
         result_flag = False
         try:
@@ -503,44 +518,6 @@ class Base_Page(Borg,unittest.TestCase):
 
         return result_flag
     
-
-
-    # def click_web_element(self,web_element,wait_time=3):
-    #     "Click the button supplied"
-    #     result_flag = False
-    #     try:
-    #         link = self.web_element
-    #         if link is not None:
-    #             link.click()
-    #             result_flag=True
-    #             self.wait(wait_time)
-    #     except Exception as e:
-    #         self.write(str(e),'debug')
-    #         self.write('Exception when clicking link with path: %s'%web_element)
-    #         self.exceptions.append("Error when clicking the element with path,'%s' in the conf/locators.conf file"%locator)
-
-    #     return result_flag
-
-#-----------------------adding particular web_element-------------------
-    # def add_to_cart(self,web_element,wait_time=1):
-    #     print(">>>>>><<<<<<")
-
-    #     result_flag = False
-    #     try:
-    #         dom_element = web_element.find_element(By.XPATH, "./following-sibling::button")
-    #         if dom_element is not None:
-    #             dom_element.click()
-    #             result_flag=True
-    #             self.wait(wait_time)
-            
-    #     except Exception as e:
-    #         self.write(str(e),'debug')
-    #         self.write('Exception when clicking link with path: %s'%dom_element)
-    #         self.exceptions.append("Error when clicking the element with path,'%s' in the conf/locators.conf file"%locator)
-
-    #     return result_flag
-#-----------------------adding particular web_element-------------------
-
 
     def set_text(self,locator,value,clear_flag=True):
         "Set the value of the text field"
@@ -743,6 +720,7 @@ class Base_Page(Borg,unittest.TestCase):
         self.image_url_list = []
         self.msg_list = []
 
+
     def add_tesults_case(self, name, desc, suite, result_flag, msg='', files=[], params={}, custom={}):
         "Update Tesults with test results"
         if self.tesults_flag is True:
@@ -768,7 +746,7 @@ class Base_Page(Borg,unittest.TestCase):
         return self.gif_file_name
 
 
-    def wait(self,wait_seconds=5,locator=None):
+    def wait(self,wait_seconds=2,locator=None):
         "Performs wait for time provided"
         if locator is not None:
             self.smart_wait(locator,wait_seconds=wait_seconds)
@@ -776,7 +754,7 @@ class Base_Page(Borg,unittest.TestCase):
             time.sleep(wait_seconds)
 
 
-    def smart_wait(self,locator,wait_seconds=5):
+    def smart_wait(self,locator,wait_seconds=2):
         "Performs an explicit wait for a particular element"
         result_flag = False
         try:
@@ -889,7 +867,7 @@ class Base_Page(Borg,unittest.TestCase):
         "Overwrite this method in your Page module if you want to visit a specific URL"
         pass
 
-#--------------------------------------------------------------------------------------
+
     def add_list(self, locator, data ):
         result_flag = False
         try:

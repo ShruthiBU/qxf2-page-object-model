@@ -9,13 +9,11 @@ from .sunscreen_page_object import Sunscreen_page_object
 from .moisturizer_page_object import Moisturizer_page_object
 from .cart_page_object import Cart_object
 from .iframe_object import Iframe_objects
-from .header_object import Header_Object
-from .footer_object import Footer_Object
 import conf.locators_conf as locators
 from utils.Wrapit import Wrapit
 
 
-class Weather_Main_Page(Base_Page,Header_Object,Footer_Object,Sunscreen_page_object,Moisturizer_page_object,
+class Weather_Main_Page(Base_Page,Sunscreen_page_object,Moisturizer_page_object,
                             Cart_object,Iframe_objects):
     "Page Object for the tutorial's main page"
 
@@ -26,7 +24,6 @@ class Weather_Main_Page(Base_Page,Header_Object,Footer_Object,Sunscreen_page_obj
     product_moisturizer = locators.moisturizer
     confirmation = locators.confirmation
 
-    # redirect_title = "redirect"
     
     def start(self):
         "Use this method to go to specific URL -- if needed"

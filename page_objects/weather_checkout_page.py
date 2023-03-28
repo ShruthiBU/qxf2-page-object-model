@@ -4,13 +4,11 @@ URL: selenium-tutorial-redirect
 The page consists of a header, footer and some text
 """
 from .Base_Page import Base_Page
-from .header_object import Header_Object
-from .footer_object import Footer_Object
 import conf.locators_conf as locators
 from utils.Wrapit import Wrapit
 
 
-class Redirect_checkout_page(Base_Page,Header_Object,Footer_Object):
+class Redirect_checkout_page(Base_Page):
     "Page Object for the tutorial's redirect page"
 
     #locators

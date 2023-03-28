@@ -1,16 +1,14 @@
 """
-This class models the redirect page of the Selenium tutorial
-URL: selenium-tutorial-redirect
-The page consists of a header, footer and some text
+This class models the redirect page of the weather shopper
+URL: moisturizer
+
 """
 from .Base_Page import Base_Page
-from .header_object import Header_Object
-from .footer_object import Footer_Object
 import conf.locators_conf as locators
 from utils.Wrapit import Wrapit
 
 
-class Moisturizer_page(Base_Page,Header_Object,Footer_Object):
+class Moisturizer_page(Base_Page):
     "Page Object for the Weather shopper's Moisturizer redirect page"
 
     #locators

@@ -1,5 +1,5 @@
 """
-This class models the form on the Selenium tutorial page
+This class models the cart page on the Weather shopper
 The form consists of some input fields, a dropdown, a checkbox and a button
 """
 import conf.locators_conf as locators
